@@ -1,42 +1,42 @@
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom';
-import { useUserContext } from "../ctx/UserContext"
+import { useEmployeeContext } from "../ctx/EmployeeContext"
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const ToDoItem = () => {
-  const [ toDoItem, setToDoItem ] = useState({ item: "" })
+const MeetingItem = () => {
+  const [ meetingItem, setMeetingItem ] = useState({ item: "" })
   const [ formMessage, setFormMessage ] = useState({ type: "", msg: "" })
-  const { currUser } = useUserContext()
+  const { currEmployee } = useEmployeeContext()
   const { id } = useParams()
   
   const handleInputChange = (e) => {
     setFormMessage({ type: "", msg: "" })
-    setToDoItem({...toDoItem, item: e.target.value})
+    setMeetingItem({...meetingItem, item: e.target.value})
   }
 
-  // if the id is anything but 0, query for that item via the api. 0 means it's a new ToDo being created.
-  const lookupToDo = async () => {
+  // if the id is anything but 0, query for that item via the api. 0 means it's a new Meeting being created.
+  const lookupMeeting = async () => {
     try {
-      const resp = await fetch(`/api/todo/${id}`)
+      const resp = await fetch(`/api/meeting/${id}`)
       const result = await resp.json()
       if( result.status === "success" ){
-        setToDoItem(result.payload)
+        setMeetingItem(result.payload)
       }
     } catch(err){
       console.log(err.message)
     }
   }
 
-  const saveToDo = async(e) => {
+  const saveMeeting = async(e) => {
     e.preventDefault()
-    if( !toDoItem.item.trim().length ) return setFormMessage({ type: "danger", msg: "Please provide an item first!" })
+    if( !meetingItem.item.trim().length ) return setFormMessage({ type: "danger", msg: "Please provide a meeting first!" })
     const method = (id == "0") ? "POST" : "PUT"
-    const path = (id == "0") ? `/api/todo/user/${currUser.data._id}` : `/api/todo/${id}`
+    const path = (id == "0") ? `/api/meeting/employee/${currEmployee.data._id}` : `/api/meeting/${id}`
     try {
       const resp = await fetch(path, {
         method: method, 
-        body: JSON.stringify(toDoItem),
+        body: JSON.stringify(meetingItem),
         headers: {
           "Content-Type": "application/json"
         }
@@ -46,32 +46,32 @@ const ToDoItem = () => {
         setFormMessage({ type: "success", msg: "Changes saved successfully!" })
       }
     } catch(err){
-      setFormMessage({ type: "danger", msg: "There was an error attempting to save this item." })
+      setFormMessage({ type: "danger", msg: "There was an error attempting to save this meeting." })
     }
   }
 
   useEffect(() => {
     if( id && id != "0" ){
-      lookupToDo()
+      lookupMeeting()
     }
   }, [id])
 
-  if( currUser.status === "searching" ) return <></>
+  if( currEmployee.status === "searching" ) return <></>
   return (
     <>
       <h1>Home Page</h1>
 
-      { currUser.status === "notfound" ? (
-        <p>You must be logged in to work with any ToDo items.</p>
+      { currEmployee.status === "notfound" ? (
+        <p>You must be logged in to work with any Meeting items.</p>
       ) : (
         <>
-          <Form onSubmit={saveToDo}>
-            <Form.Group className="mb-3" controlId="toDoForm.toDoItem">
-              <Form.Label>Enter your ToDo here</Form.Label>
+          <Form onSubmit={saveMeeting}>
+            <Form.Group className="mb-3" controlId="MeetingForm.MeetingItem">
+              <Form.Label>Enter your Meeting here</Form.Label>
               <Form.Control 
                 as="textarea" 
                 name="item" 
-                value={toDoItem.item} 
+                value={MeetingItem.item} 
                 onChange={handleInputChange} 
                 rows={3} 
               />
@@ -91,4 +91,4 @@ const ToDoItem = () => {
   )
 }
 
-export default ToDoItem
+export default MeetingItem

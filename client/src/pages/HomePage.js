@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
-import { useUserContext } from "../ctx/UserContext"
+import { useEmployeeContext } from "../ctx/EmployeeContext"
 
 const HomePage = () => {
-  const [ toDoList, setToDoList ] = useState([])
-  const { currUser } = useUserContext()
+  const [ MeetingList, setMeetingList ] = useState([])
+  const { currEmployee } = useEmployeeContext()
   
-  const checkForTodos = async () => {
+  const checkForMeetings = async () => {
     try {
-      const resp = await fetch(`/api/todo/all/${currUser.data._id}`)
+      const resp = await fetch(`/api/meeting/all/${currEmployee.data._id}`)
       const result = await resp.json()
       if( result.status === "success" ){
-        setToDoList(result.payload)
+        setMeetingList(result.payload)
       }
     } catch(err){
       console.log(err.message)
@@ -19,26 +19,26 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    checkForTodos()
-  }, [currUser])
+    checkForMeetings()
+  }, [currEmployee])
 
-  if( currUser.status === "searching" ) return <></>
+  if( currEmployee.status === "searching" ) return <></>
   return (
     <>
       <h1>Home Page</h1>
 
-      { currUser.status === "notfound" ? (
+      { currEmployee.status === "notfound" ? (
         <p>You must be logged in to see your items.</p>
       ) : (
         <>
-          { toDoList.length === 0 ? (
-            <p>Sorry, no items available. You can <Link to="/todo/0">create one now</Link>.</p>
+          { MeetingList.length === 0 ? (
+            <p>Sorry, no items available. You can <Link to="/meeting/0">create one now</Link>.</p>
           ) : (
             <ul>
-              { toDoList.map( todo => (
-                <li key={todo._id}>
-                  <Link to={`/todo/${todo._id}`}>
-                    { todo.item }
+              { MeetingList.map( meeting => (
+                <li key={meeting._id}>
+                  <Link to={`/meeting/${meeting._id}`}>
+                    { meeting.item }
                   </Link>
                 </li>
               ))}
