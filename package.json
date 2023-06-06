@@ -1,7 +1,7 @@
 {
-  "name": "mern-auth-starter",
-  "version": "1.0.0",
-  "description": "",
+  "name": "business-dashboard",
+  "version": "1.0.1",
+  "description": "This is an all in one hub for business statstics and employee communications",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",

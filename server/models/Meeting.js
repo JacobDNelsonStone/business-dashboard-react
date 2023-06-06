@@ -1,9 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const meetingSchema = new Schema({
-  meetingTopic: { 
-    type: String, 
-    required: true 
+  meetingTopic: {
+    type: String,
+    required: true
   },
 
   meetingDate: {
@@ -11,12 +11,14 @@ const meetingSchema = new Schema({
     required: true
   },
 
-  employees: {
-    ref: {
-      type: Schema.Types.ObjectId,
-      ref: 'Employee'
+  employees: [
+    {
+      ref: {
+        type: Schema.Types.ObjectId,
+        ref: 'Employee'
+      }
     }
-  }
+  ]
 
 });
 

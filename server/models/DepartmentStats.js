@@ -14,10 +14,9 @@ const departmentSchema = new Schema({
   },
 
   newSale: {
-    type: String,
     ref: {
       type: Schema.Types.ObjectId,
-      model: 'Employee'
+      model: "Employee"
     }
   }
 });
