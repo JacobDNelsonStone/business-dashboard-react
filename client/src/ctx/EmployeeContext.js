@@ -1,17 +1,17 @@
 import { createContext, useContext, useState, useEffect } from "react" 
 import Cookies from "js-cookie";
 
-const UserContext = createContext({})
-export const useUserContext = () => useContext(UserContext)
+const EmployeeContext = createContext({})
+export const useEmployeeContext = () => useContext(EmployeeContext)
 
-export const UserProvider = ({ children }) => {
-  const [ currUser, setCurrUser ] = useState({ status: "searching", data: null })
+export const EmployeeProvider = ({ children }) => {
+  const [ currEmployee, setCurrEmployee ] = useState({ status: "searching", data: null })
 
-  const verifyUser = async() => {
-    setCurrUser({ status: "searching", data: null })
+  const verifyEmployee = async() => {
+    setCurrEmployee({ status: "searching", data: null })
     if( Cookies.get("auth-cookie") ){
       try {
-        const query = await fetch("/api/user/verify", {
+        const query = await fetch("/api/employee/verify", {
           method: "post",
           body: JSON.stringify({}),
           headers: {
@@ -20,12 +20,12 @@ export const UserProvider = ({ children }) => {
         })
         const result = await query.json()
         if( result && result.status === "success" ){
-          setCurrUser({ status: "found", data: result.payload })
+          setCurrEmployee({ status: "found", data: result.payload })
         } else {
-          setCurrUser({ status: "notfound" })
+          setCurrEmployee({ status: "notfound" })
         }
       } catch(err){
-        setCurrUser({ status: "notfound", data: null })
+        setCurrEmployee({ status: "notfound", data: null })
         if( !window.location.href.includes("/login") ){
           window.location.href = "/login"
         }
@@ -35,18 +35,18 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     Cookies.remove("auth-cookie");
-    setCurrUser({ status: "searching", data: null })
+    setCurrEmployee({ status: "searching", data: null })
     window.location.href = "/login"
   }
 
   useEffect(() => {
-    verifyUser()
+    verifyEmployee()
   }, [window.location.href])
 
 
   return (
-    <UserContext.Provider value={{ currUser, logout }}>
+    <EmployeeContext.Provider value={{ currEmployee, logout }}>
       { children }
-    </UserContext.Provider>
+    </EmployeeContext.Provider>
   )
 }

@@ -12,7 +12,7 @@ const SignupPage = (props) => {
 
   const handleFormSubmit = async(e) => {
     e.preventDefault()
-    const query = await fetch("/api/user", {
+    const query = await fetch("/api/employee", {
       method: "post",
       body: JSON.stringify(formData),
       headers: {

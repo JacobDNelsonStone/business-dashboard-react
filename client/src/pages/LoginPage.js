@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault()
-    const query = await fetch("/api/user/auth", {
+    const query = await fetch("/api/employee/auth", {
       method: "post",
       body: JSON.stringify(formData),
       headers: {

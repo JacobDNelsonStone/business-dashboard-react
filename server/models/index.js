@@ -1,4 +1,4 @@
-const User = require('./User');
-const ToDoItem = require('./ToDoItem');
+const Employee = require('./Employee');
+const DepartmentStats = require('./DepartmentStats');
 
-module.exports = { User, ToDoItem };
+module.exports = { Employee, DepartmentStats };
