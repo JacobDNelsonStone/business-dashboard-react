@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { Employee } = require('../models');
 const jwt = require("jsonwebtoken");
 require("dotenv").config()
 
@@ -8,7 +8,7 @@ module.exports = {
   
   async createUser({ body }, res) {
     try{
-      const user = await User.create(body);
+      const user = await Employee.create(body);
       const { password, ...modifiedUser } = user;
 
       const token = jwt.sign({
@@ -26,7 +26,7 @@ module.exports = {
   async authUser({ body }, res) {
     let user
     try {
-      user = await User.findOne({ email: body.email});
+      user = awaEmployee.findOne({ email: body.email});
     } catch(err){
       return res.status(400).json({ message: 'Unable to authenticate user' });
     }
@@ -52,7 +52,7 @@ module.exports = {
     const isVerified = jwt.verify(cookie, process.env.JWT_SECRET)
     if( !isVerified ) return res.status(401).json({msg: "un-authorized"})
 
-    const user = await User.findOne({ _id: isVerified.id }).select("-password")
+    const user = await Employee.findOne({ _id: isVerified.id }).select("-password")
     if( !user ) return res.status(401).json({msg: "authorized"})
     
     return res.status(200).json({ status: "success", payload: user })
