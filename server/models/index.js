@@ -1,4 +1,4 @@
 const Employee = require('./Employee');
 const DepartmentStats = require('./DepartmentStats');
-
-module.exports = { Employee, DepartmentStats };
+const Meeting = require('./Meeting')
+module.exports = { Employee, DepartmentStats, Meeting };
