@@ -7,6 +7,7 @@ require("dotenv").config()
 module.exports = {
   
   async createEmployee({ body }, res) {
+    console.log({body})
     try{
       const employee = await Employee.create(body);
       const { password, ...modifiedEmployee } = employee;
@@ -25,6 +26,7 @@ module.exports = {
 
   async authEmployee({ body }, res) {
     let employee
+    console.log({body})
     try {
       employee = await Employee.findOne({ email: body.email});
     } catch(err){
