@@ -28,9 +28,12 @@ export const EmployeeProvider = ({ children }) => {
       // No cookie/current user = redirect to login
       } catch(err){
         setCurrEmployee({ status: "notfound", data: null })
-        if( !window.location.href.includes("/login") ){
-          window.location.href = "/login"
-        }
+        // if( !window.location.href.includes("/login") ){
+        //   window.location.href = "/login"
+        // } 
+        // else {
+        //   setCurrEmployee({ status: "notfound" })
+        // }
       }
     // catch-all/failsafe if browser's still "searching" for employee
     } else {

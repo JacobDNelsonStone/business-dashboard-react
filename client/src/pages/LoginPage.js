@@ -12,13 +12,14 @@ const LoginPage = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     const query = await fetch("/api/employee/auth", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify(formData),
       headers: {
         "Content-Type": "application/json"
       }
     })
     const result = await query.json()
+    console.log(result)
 
     if( result && result.payload ){
       window.location.href = "/"
