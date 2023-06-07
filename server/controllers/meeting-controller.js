@@ -16,7 +16,8 @@ module.exports = {
 
   async getAllMeetings({ body, params }, res) {
     try {
-      const meetings = await Meeting.find({ userId: params.userid })
+      const meetings = await Meeting.find()
+      console.log(meetings)
       return res.status(200).json({ status: "success", payload: meetings })
     } catch(err){
       console.log(err.message)

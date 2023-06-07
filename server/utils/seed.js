@@ -6,7 +6,8 @@ connection.on('error', (err) => err);
 
 connection.once('open', async () => {
   console.log('connected');
-  
+  console.log(connection);
+
   const seedDepartmentStats = [
     {
       monthlyEarnings: "$123,456",
@@ -72,19 +73,21 @@ connection.once('open', async () => {
     }
   ]
 
-const seedDB = async()=> { 
-  await DepartmentStats.deleteMany({});
-  await DepartmentStats.insertMany(seedDepartmentStats)
+  const seedDB = async () => {
+    await DepartmentStats.deleteMany({});
+    await DepartmentStats.insertMany(seedDepartmentStats)
 
-  await Employee.deleteMany({});
-  await Employee.insertMany(seedEmployee)
+    await Employee.deleteMany({});
+    await Employee.insertMany(seedEmployee)
 
-  await Meeting.deleteMany({});
-  await Meeting.insertMany(seedMeeting)
+    await Meeting.deleteMany({});
+    await Meeting.insertMany(seedMeeting)
 
-}
+  }
 
-  console.table(students);
+  seedDB()
+  console.table(seedMeeting);
+  console.table(seedEmployee);
   console.info('Seeding complete! 🌱');
   process.exit(0);
 });

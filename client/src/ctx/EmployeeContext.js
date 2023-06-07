@@ -26,9 +26,12 @@ export const EmployeeProvider = ({ children }) => {
         }
       } catch(err){
         setCurrEmployee({ status: "notfound", data: null })
-        if( !window.location.href.includes("/login") ){
-          window.location.href = "/login"
-        }
+        // if( !window.location.href.includes("/login") ){
+        //   window.location.href = "/login"
+        // } 
+        // else {
+        //   setCurrEmployee({ status: "notfound" })
+        // }
       }
     }
   }
