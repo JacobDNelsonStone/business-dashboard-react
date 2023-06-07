@@ -5,6 +5,7 @@ const EmployeeContext = createContext({})
 export const useEmployeeContext = () => useContext(EmployeeContext)
 
 export const EmployeeProvider = ({ children }) => {
+  // when user first arrives, sets currUser to "searching" + null data
   const [ currEmployee, setCurrEmployee ] = useState({ status: "searching", data: null })
 
   const verifyEmployee = async() => {
@@ -24,6 +25,7 @@ export const EmployeeProvider = ({ children }) => {
         } else {
           setCurrEmployee({ status: "notfound" })
         }
+      // No cookie/current user = redirect to login
       } catch(err){
         setCurrEmployee({ status: "notfound", data: null })
         // if( !window.location.href.includes("/login") ){
@@ -33,15 +35,20 @@ export const EmployeeProvider = ({ children }) => {
         //   setCurrEmployee({ status: "notfound" })
         // }
       }
+    // catch-all/failsafe if browser's still "searching" for employee
+    } else {
+      setCurrEmployee({ status: "notfound" });
     }
   }
 
+  // logs out employee + redirects to "login" page
   const logout = () => {
     Cookies.remove("auth-cookie");
     setCurrEmployee({ status: "searching", data: null })
     window.location.href = "/login"
   }
 
+  // when window is opened, checks if employee is logged in
   useEffect(() => {
     verifyEmployee()
   }, [window.location.href])
