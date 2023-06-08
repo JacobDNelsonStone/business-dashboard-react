@@ -1,33 +1,27 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Form, Button, Card } from "react-bootstrap";
-import { useEmployeeContext } from "../ctx/EmployeeContext";
+// import { useEmployeeContext } from "../ctx/EmployeeContext";
 
 
-function NewMessageForm(props) {
-  const { currEmployee } = useEmployeeContext()
-  const newMsgForm = { messageText: "", employeeId: '' };
-  const [formData, setFormData] = useState(newMsgForm);
+function NewMessageForm({currEmployee}) {
+  // const { currEmployee } = useEmployeeContext()
+  const [formData, setFormData] = useState('');
 
-  // console.log(currEmployee.data._id)
-
+  
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setFormData(e.target.value)
     console.log(formData)
   }
-
-  useEffect(() => {
-    
-    setFormData({ ...formData, employeeId: currEmployee.data._id })
-  }, [currEmployee])
-
+  
   const postNewMessage = async (e) => {
     e.preventDefault()
+    console.log(currEmployee.data._id)
     console.log(formData);
     try {
       const query = await fetch('/api/message', {
         method: 'POST',
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ messageText: formData, employeeId: currEmployee.data._id}),
         headers: {
           "Content-Type": "application/json"
         }

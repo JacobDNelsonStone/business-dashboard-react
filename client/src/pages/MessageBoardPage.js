@@ -5,8 +5,12 @@ import { useEmployeeContext } from "../ctx/EmployeeContext"
 
 
 function MessageBoard({ children }) {
-const { currEmployee } = useEmployeeContext()
+  const { currEmployee } = useEmployeeContext()
 
+  // useEffect(() => {
+
+  //   setFormData({ ...formData, employeeId: currEmployee.data._id })
+  // }, [currEmployee])
   return (
     <Container className="col-xl-12 d-flex flex-row ms-0">
       <Container className="col-xl-3 align-items-start">
@@ -25,7 +29,7 @@ const { currEmployee } = useEmployeeContext()
           </Row>
         </Container>
         <Row className="w-100">
-          <NewMessageForm />
+          <NewMessageForm currEmployee={currEmployee}/>
         </Row>
       </Col>
     </Container>
