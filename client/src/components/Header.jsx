@@ -7,7 +7,7 @@ const Header = () => {
   console.log(window.location.pathname)
   return (
     <header className="pb-0 mb-0" style={{ borderBottom: "1px solid #333" }}>
-      <Navbar bg="dark" variant="dark" expand="md" style={{ justifyContent: "space-between" }}>
+      <Navbar bg="" variant="#2FBEBE" expand="md" style={{ justifyContent: "space-between", border: "0px" }}>
         <div className="container-fluid" style={{ width: "65%"}}>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
