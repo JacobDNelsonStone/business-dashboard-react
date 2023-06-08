@@ -67,6 +67,7 @@ const Header = () => {
                 ></div>
                 <Nav.Link href="/">Home</Nav.Link>
               </li>
+              <li><Nav.Link href="/messageBoard">Message Board</Nav.Link></li>
 
               {/* Changes nav links depending on the user's status,  */}
               {currEmployee.status === "notfound" && (
