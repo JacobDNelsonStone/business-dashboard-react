@@ -15,12 +15,18 @@ const messageSchema = new Schema({
   }
 },
 {
-  toJSON: {
-    getters: true,
+  toJSON: 
+  {
+    virtuals: true,
   },
   id: false,
 }
 );
+
+messageSchema.virtual('getEmployeeName').get(function() {
+  return `${this.employeeId.fname} ${this.employeeId.lname}`
+})
+
 
 const Message = model('Message', messageSchema);
 module.exports = Message;

@@ -30,9 +30,9 @@ function MessageList(props) {
   return (
     <>
       {messages && messages.map(message => (
-        <Card className="py-4 chat">
+        <Card className="px-3">
           <Row key={message._id} >
-            <h1 className="sender">{message.employeeId}</h1>
+            <h1 className="content fs-4">{message.employeeId.fname} {message.employeeId.lname}</h1>
 
             <p className="fs-5">{message.messageText}</p>
           </Row>
