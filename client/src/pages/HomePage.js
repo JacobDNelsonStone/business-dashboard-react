@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useEmployeeContext } from "../ctx/EmployeeContext"
+import Container1 from "../components/Container1";
 
 const HomePage = () => {
   const [ MeetingList, setMeetingList ] = useState([])
@@ -24,10 +25,12 @@ const HomePage = () => {
     checkForMeetings()
   }, [currEmployee])
 
-  if( currEmployee.status === "searching" ) return <></>
+ if( currEmployee.status === "searching" ) return <></>
   return (
+    
     <>
       <h1>Home Page</h1>
+      <Container1/>
 
       { currEmployee.status === "notfound" ? (
         <p>Sign in or log in to see your company's data!.</p>
