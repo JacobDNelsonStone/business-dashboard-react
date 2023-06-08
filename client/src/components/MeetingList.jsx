@@ -1,11 +1,6 @@
 import React from 'react';
 
 const MeetingsList = () => {
-   const meetings = [
-    { id: 1, title: '', time: '', location: '' },
-    { id: 2, title: '', time: '', location: '' },
-    { id: 3, title: '', time: '', location: '' },
-  ];
 
   return (
     <div>

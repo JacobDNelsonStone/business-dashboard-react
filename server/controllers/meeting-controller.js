@@ -6,7 +6,7 @@ module.exports = {
   
   async createMeeting({ body, params }, res) {
     try {
-      const meeting = await Meeting.create({ item: body.item, userId: params.userid })
+      const meeting = await Meeting.create({ meetingTopic: body.meetingTopic, meetingDate: body.meetingDate, employees: body.employees })
       return res.status(200).json({ status: "success", payload: meeting})
     } catch(err){
       return res.status(400).json({ status: "error", msg: `Error creating meeting Item: ${err.message}` })
@@ -16,12 +16,12 @@ module.exports = {
 
   async getAllMeetings({ body, params }, res) {
     try {
-      const meetings = await Meeting.find()
+      const meetings = await Meeting.find().populate('employees')
       console.log(meetings)
       return res.status(200).json({ status: "success", payload: meetings })
     } catch(err){
       console.log(err.message)
-      return res.status(400).json({ status: "error", msg: `Error retrieving meeting Items: ${err.message}` })
+      return res.status(400).json({ status: "error", msg: `Error retrieving meetings: ${err.message}` })
     }
   },
 
@@ -37,7 +37,7 @@ module.exports = {
 
   async updateOneMeeting({ body, params }, res) {
     try {
-      const meeting = await Meeting.findOneAndUpdate({ _id: params.id }, { item: body.item }, { new: true })
+      const meeting = await Meeting.findOneAndUpdate({ _id: params.id }, { body }, { new: true })
       return res.status(200).json({ status: "success", payload: meeting })
     } catch(err){
       console.log(err.message)

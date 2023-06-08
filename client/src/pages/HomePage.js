@@ -5,14 +5,13 @@ import Container1 from "../components/Container1";
 import Charts from "../components/Charts";
 
 const HomePage = () => {
-  const [ MeetingList, setMeetingList ] = useState([])
 
   // obtains current employee via middleware
   const { currEmployee } = useEmployeeContext()
   
   const checkForMeetings = async () => {
     try {
-      const resp = await fetch(`/api/meeting/all/${currEmployee.data._id}`)
+      const resp = await fetch(`/api/meeting/`)
       const result = await resp.json()
       if( result.status === "success" ){
         setMeetingList(result.payload)
@@ -33,12 +32,12 @@ const HomePage = () => {
       <Container1 />
       <Charts/>
 
-      {currEmployee.status === "notfound" ? (
+      {/* {currEmployee.status === "notfound" ? (
         <p>Sign in or log in to see your company's data!.</p>
       ) : (
-        <>
+        <> */}
           {/* if there are no meetings, prompt user to make one */}
-          {MeetingList.length === 0 ? (
+          {/* {MeetingList.length === 0 ? (
             <p>
               Sorry, no items available. You can{" "}
               <Link to="/meeting/0">create one now</Link>.
@@ -52,9 +51,9 @@ const HomePage = () => {
                 </li>
               ))}
             </ul>
-          )}
-        </>
-      )}
+          )} */}
+        {/* </>
+      )} */}
     </>
   );
 }
