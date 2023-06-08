@@ -16,6 +16,7 @@ const Header = () => {
             {/* Add the activeKey code below and the rest shoud work  */}
             <Nav className="me-auto" activeKey={window.location.pathname}>
               <li><Nav.Link href="/">Home</Nav.Link></li>
+              <li><Nav.Link href="/messageBoard">Message Board</Nav.Link></li>
 
               {/* Changes nav links depending on the user's status,  */}
               { currEmployee.status === "notfound" && (

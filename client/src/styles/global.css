@@ -1,17 +1,22 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: Arial, sans-serif;
   color: #fcfcfc;
 }
+
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: #f2f2f2;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -28,12 +33,20 @@ body {
   margin: 0;
   font-size: 24px;
 }
+
+.col-reverse-end {
+  flex-direction: column;
+  justify-content: flex-end;
+
+}
+
 .content {
   background-color: #fff;
   padding: 20px;
   margin-top: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .chat .message {
   background-color: #f9f9f9;
   padding: 10px;
@@ -44,6 +57,7 @@ body {
 .chat .message .sender {
   font-weight: bold;
 }
+
 .issues .issue {
   background-color: #f9f9f9;
   padding: 10px;
@@ -59,6 +73,7 @@ body {
   margin-top: 5px;
   font-size: 12px;
 }
+
 input[type="text"],
 textarea {
   width: 100%;
@@ -79,6 +94,7 @@ button {
 button:hover {
   background-color: #555;
 }
+
 @media screen and (max-width: 768px) {
   .container {
     padding: 10px;
