@@ -5,6 +5,8 @@ import Container1 from "../components/Container1";
 
 const HomePage = () => {
   const [ MeetingList, setMeetingList ] = useState([])
+
+  // obtains current employee via middleware
   const { currEmployee } = useEmployeeContext()
   
   const checkForMeetings = async () => {
@@ -31,12 +33,14 @@ const HomePage = () => {
       <Container1/>
 
       { currEmployee.status === "notfound" ? (
-        <p>You must be logged in to see your items.</p>
+        <p>Sign in or log in to see your company's data!.</p>
       ) : (
         <>
+        {/* if there are no meetings, prompt user to make one */}
           { MeetingList.length === 0 ? (
             <p>Sorry, no items available. You can <Link to="/meeting/0">create one now</Link>.</p>
           ) : (
+            // else, list every meeting
             <ul>
               { MeetingList.map( meeting => (
                 <li key={meeting._id}>
