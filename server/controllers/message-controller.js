@@ -19,7 +19,8 @@ module.exports = {
 
   async getMessages(req, res) {
     try {
-      const allMessages = await Message.find().populate('Employee')
+      
+      const allMessages = await Message.find().populate('employeeId')
       // const allMessages = await messages.forEach(message => message.populate('Employee'))
 
       res.status(200).json({status: 'success', payload: allMessages})
