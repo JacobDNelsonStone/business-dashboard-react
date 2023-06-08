@@ -18,6 +18,7 @@ function NewMessageForm({currEmployee}) {
     e.preventDefault()
     console.log(currEmployee.data._id)
     console.log(formData);
+    console.log('got here')
     try {
       const query = await fetch('/api/message', {
         method: 'POST',
