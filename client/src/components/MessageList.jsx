@@ -30,8 +30,8 @@ function MessageList(props) {
   return (
     <>
       {messages && messages.map(message => (
-        <Card className="px-3">
-          <Row key={message._id} >
+        <Card key={message._id} className="px-3">
+          <Row  >
             <h1 className="content fs-4">{message.employeeId.fname} {message.employeeId.lname}</h1>
 
             <p className="fs-5">{message.messageText}</p>

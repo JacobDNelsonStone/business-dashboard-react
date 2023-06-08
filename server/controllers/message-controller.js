@@ -4,6 +4,7 @@ module.exports = {
 
   async createMessage({ body }, res) {
     console.log(body)
+    console.log("got here===============" + {body})
     try {
       if (!body) {
         res.status(401).json({ status: 'insufficient request' })
