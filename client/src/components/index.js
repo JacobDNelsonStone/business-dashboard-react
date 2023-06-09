@@ -9,3 +9,7 @@ export { default as NewMessageForm } from "./NewMessageForm"
 export { default as Charts } from "./Charts"
 export { default as MeetingList } from "./MeetingList"
 export { default as DepartmentStats } from "./DepartmentStats"
+
+
+export { default as CheckBox } from './CheckBox'
+export { default as CheckBoxContainer } from './CheckboxContainer'

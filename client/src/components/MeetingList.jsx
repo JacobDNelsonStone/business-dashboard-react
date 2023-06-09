@@ -20,6 +20,7 @@ const MeetingsList = () => {
         setMeetings(res.payload)
         // console.log(meetings)
         // console.log(meetings[0].employees[0].fname)
+        // console.log(meetings[0]._id)
       }
     } catch (err) {
       console.log(err.message)
@@ -31,7 +32,7 @@ const MeetingsList = () => {
   }, [meetings.length])
 
   return (
-    <Container>
+    <Container className={!window.location.pathname.includes('/meetingPage') ? "zoomAnimation" : ""} style={{ border: "3px solid white", borderRadius: "12px" }}>
       <h2 className='fs-1 pb-5'>Upcoming Meetings!</h2>
       <Row className=''>
         {meetings.length && meetings.map((meeting) => (
@@ -43,7 +44,6 @@ const MeetingsList = () => {
             {meeting.employees.map(employee =>
               <CardHeader border="warning">{employee.fname} {employee.lname}</CardHeader>
             )}
-
           </Card>
         ))}
       </Row>
