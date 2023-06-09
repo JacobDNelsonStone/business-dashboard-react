@@ -15,6 +15,13 @@ const employeeSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: [true, "Email is already registered."], // makes sure that emails aren't reused
+    validate: { // Checks if email is in email format. Else, return error message.
+      validator: function(input) {
+        return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(input);
+      },
+      message: "Not a valid email",
+    },
   },
 
   password: {

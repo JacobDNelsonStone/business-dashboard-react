@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useEmployeeContext } from "../ctx/EmployeeContext"
-import {Container1, MeetingList } from "../components";
-import Charts from "../components/Charts";
+import {Container1, MeetingList, Charts } from "../components";
+// import {Charts} from "../components/Charts";
 
 const HomePage = () => {
 
@@ -25,35 +25,24 @@ const HomePage = () => {
     checkForMeetings()
   }, [currEmployee])
 
- if( currEmployee.status === "searching" ) return <></>
+//  if( currEmployee.status === "notfound" || currEmployee.status === "searching" ) return <></>
   return (
     <>
-      <h1>Home Page</h1>
-      <Container1 />
-      <Charts/>
-      < MeetingList />
-      {/* {currEmployee.status === "notfound" ? (
-        <p>Sign in or log in to see your company's data!.</p>
+      <h1>All-In-One Business Dashboard</h1>
+
+      {currEmployee.status === "notfound" ? (
+        <h3>Sign in or log in to see your company's data!.</h3>
       ) : (
-        <> */}
-          {/* if there are no meetings, prompt user to make one */}
-          {/* {MeetingList.length === 0 ? (
-            <p>
-              Sorry, no items available. You can{" "}
-              <Link to="/meeting/0">create one now</Link>.
-            </p>
-          ) : (
-            // else, list every meeting
-            <ul>
-              {MeetingList.map((meeting) => (
-                <li key={meeting._id}>
-                  <Link to={`/meeting/${meeting._id}`}>{meeting.item}</Link>
-                </li>
-              ))}
-            </ul>
-          )} */}
-        {/* </>
-      )} */}
+        <>
+          <Container1 />
+          <Charts />
+          < MeetingList />
+        </>
+      )}
+      
+
+      
+      
     </>
   );
 }
