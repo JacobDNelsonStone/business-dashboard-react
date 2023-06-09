@@ -91,6 +91,19 @@ button {
   cursor: pointer;
 }
 
+.zoomAnimation {
+  cursor: pointer;
+  transition: transform .4s;
+}
+
+.cardHeight {
+  min-height: 250px;
+}
+
+.zoomAnimation:hover {
+  
+  transform: scale(1.1);
+}
 
 button:hover {
   background-color: #555;

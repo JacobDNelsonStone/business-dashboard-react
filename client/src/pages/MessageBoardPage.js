@@ -12,16 +12,16 @@ function MessageBoard({ children }) {
   //   setFormData({ ...formData, employeeId: currEmployee.data._id })
   // }, [currEmployee])
   return (
-    <Container className="col-xl-12 d-flex flex-row ms-0">
+    <Container className="col-xl-12 col-12 d-flex flex-row ms-0 mh-100">
       <Container className="col-xl-3 align-items-start">
-        <Col className="col-xl-12 col-9 px-5">
+        <Col className="col-xl-12 col-12 px-5">
           <EmployeeList>
             {children}
           </EmployeeList>
         </Col>
       </Container>
-      <Col className="col-xl-9 d-flex align-items-end w-100 flex-wrap">
-        <Container className="col-xl-12" >
+      <Col className="col-xl-9 col-12 d-flex align-items-end w-100 flex-wrap">
+        <Container className="col-xl-12 col-12" >
           <Row className="">
             <MessageList>
               {children}

@@ -13,14 +13,18 @@ const meetingSchema = new Schema({
 
   employees: [
     {
-      ref: {
-        type: Schema.Types.ObjectId,
-        ref: 'Employee'
-      }
+      type: Schema.Types.ObjectId,
+      ref: 'Employee'
     }
   ]
-
-});
+},
+  {
+    toJSON:
+    {
+      virtuals: true,
+    },
+    id: false,
+  });
 
 
 const Meeting = model('Meeting', meetingSchema);
