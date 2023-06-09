@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Wrapper, Container1 } from "./components"
 import { EmployeeProvider } from "./ctx/EmployeeContext";
-import { HomePage, LoginPage, SignupPage, MeetingItem, MessageBoardPage } from "./pages";
+import { HomePage, LoginPage, SignupPage, MessageBoardPage, MeetingPage } from "./pages";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/global.css'
@@ -20,7 +20,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/messageBoard" element={<MessageBoardPage />} />
-              <Route path="/meeting" element={<MeetingItem />} />
+              <Route path="/meetingPage" element={<MeetingPage />} />
             </Routes>
           </div>
         </Wrapper>
