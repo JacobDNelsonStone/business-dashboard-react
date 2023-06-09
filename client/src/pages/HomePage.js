@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useEmployeeContext } from "../ctx/EmployeeContext"
-import Container1 from "../components/Container1";
+import {Container1, MeetingList } from "../components";
 import Charts from "../components/Charts";
 
 const HomePage = () => {
@@ -14,7 +14,7 @@ const HomePage = () => {
       const resp = await fetch(`/api/meeting/`)
       const result = await resp.json()
       if( result.status === "success" ){
-        setMeetingList(result.payload)
+        // setMeetingList(result.payload)
       }
     } catch(err){
       console.log(err.message)
@@ -31,7 +31,7 @@ const HomePage = () => {
       <h1>Home Page</h1>
       <Container1 />
       <Charts/>
-
+      < MeetingList />
       {/* {currEmployee.status === "notfound" ? (
         <p>Sign in or log in to see your company's data!.</p>
       ) : (

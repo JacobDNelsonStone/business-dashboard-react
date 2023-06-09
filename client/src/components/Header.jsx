@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <header className="pb-0 mb-0" style={{ borderBottom: "1px solid #333" }}>
+    <header className="pb-0 mb-0" style={{ borderBottom: "3px solid #333", cursor: 'default' }}>
       <Navbar
         bg=""
         variant="#2FBEBE"
@@ -32,22 +32,22 @@ const Header = () => {
       >
         <div
           className="container-fluid d-flex "
-          style={{ width: "90%", flexWrap: "wrap",  backgroundImage: 'linear-gradient(to right, #ff0000, #00ff00, #0000ff, transparent)',}}
+          style={{ width: "100%", flexWrap: "wrap", backgroundImage: 'linear-gradient(to right, #ff0000, #00ff00, #0000ff, transparent)', }}
         >
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            
-            
+
+
             {/* Add the activeKey code below and the rest shoud work  */}
-            <Nav className="me-auto" activeKey={window.location.pathname}>
+            <Nav className="me-auto py-2" activeKey={window.location.pathname}>
               <li
                 variant="outline-light"
                 style={{
-                  width: "65%",
+                  width: "100%",
                   backgroundColor: homeClicked ? "rgba(255, 0, 0, 0.5)" : "red",
                   borderRadius: "10px",
                   margin: "5px",
-                  padding: "10px 20px",
+                  padding: "10px 10px",
                   opacity: homeClicked ? "0.8" : "1",
                   transition: "opacity 0.3s ease",
                   clipPath: homeClicked
@@ -65,14 +65,15 @@ const Header = () => {
                 <div
                   style={{ transform: homeClicked ? "rotate(-45deg)" : "none" }}
                 ></div>
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link className="text-light zoomAnimation fs-3" href="/">Home</Nav.Link>
               </li>
-              <li><Nav.Link href="/messageBoard">Message Board</Nav.Link></li>
+              <li><Nav.Link className="text-light zoomAnimation fs-3" href="/messageBoard">Message Board</Nav.Link></li>
 
               {/* Changes nav links depending on the user's status,  */}
               {currEmployee.status === "notfound" && (
                 <>
                   <li
+                  className="zoomAnimation"
                     variant="outline-light"
                     style={{
                       backgroundColor: signClicked ? "darkred" : "yellow",
@@ -139,6 +140,7 @@ const Header = () => {
                     <Nav.Link href="/signup">Signup</Nav.Link>
                   </li>
                   <li
+                    className="zoomAnimation"
                     variant="outline-light"
                     style={{
                       backgroundColor: loginClicked ? "darkred" : "gray",
@@ -162,26 +164,26 @@ const Header = () => {
               )}
             </Nav>
           </Navbar.Collapse>
-        </div>
-        <div style={{ width: "35%", paddingRight: "10px" }}>
-          {/* if user is "found" (signed-in), give option to Logout */}
-          {currEmployee.status === "found" && (
-            <ul
-              className="navbar-nav me-auto mb-2 mb-lg-0"
-              style={{ display: "flex", justifyContent: "flex-end" }}
-            >
-              <li className="nav-item">
-                <span className="nav-link active">
-                  Welcome back, {currEmployee.data.fname}
-                </span>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" onClick={logout}>
-                  Logout
-                </a>
-              </li>
-            </ul>
-          )}
+          <div style={{ width: "35%", paddingRight: "10px" }}>
+            {/* if user is "found" (signed-in), give option to Logout */}
+            {currEmployee.status === "found" && (
+              <ul
+                className="navbar-nav me-auto mb-2 mb-lg-0"
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <li className="nav-item">
+                  <span className="nav-link zoomAnimation active text-light fs-4">
+                    Welcome back, {currEmployee.data.fname}
+                  </span>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link zoomAnimation active text-light fs-4" onClick={logout}>
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            )}
+          </div>
         </div>
       </Navbar>
     </header>

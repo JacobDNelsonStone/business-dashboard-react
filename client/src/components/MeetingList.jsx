@@ -1,29 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Card, CardGroup, Container, Form, Row } from 'react-bootstrap';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 const MeetingsList = () => {
+  const [meetings, setMeetings] = useState([])
+
+  const getMeetings = async () => {
+    try {
+      const query = await fetch('/api/meeting', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      const res = await query.json()
+      console.log(res)
+      if (res) {
+        setMeetings(res.payload)
+        console.log(meetings)
+        console.log(meetings[0].employees[0].fname)
+      }
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+  useEffect(() => {
+    getMeetings()
+  }, [meetings.length])
 
   return (
-    <div>
-      <h2>Meetings List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Bussiess Dash</th>
-            <th>Time</th>
-            <th>Location</th>
-          </tr>
-        </thead>
-        <tbody>
-          {meetings.map((meeting) => (
-            <tr key={meeting.id}>
-              <td>{meeting.title}</td>
-              <td>{meeting.time}</td>
-              <td>{meeting.location}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Container>
+      <h2 className='fs-1 pb-5'>Upcoming Meetings!</h2>
+      <Row className=''>
+        {meetings.length && meetings.map((meeting) => (
+          <Card key={meeting._id} bg="success text-light col-xl-3 cardHeight">
+            <CardHeader className="fs-4" shadow="10">
+              {meeting.meetingTopic}
+            </CardHeader>
+            <h4 className="fs-5">{meeting.meetingDate}</h4>
+            {meeting.employees.map(employee =>
+              <CardHeader border="warning">{employee.fname} {employee.lname}</CardHeader>
+            )}
+
+          </Card>
+        ))}
+      </Row>
+      <Row>
+        
+      </Row>
+    </Container>
   );
 };
 

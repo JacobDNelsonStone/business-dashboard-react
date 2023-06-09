@@ -5,7 +5,7 @@ const { createMeeting, getAllMeetings, getOneMeeting, updateOneMeeting, deleteOn
 
 // Declare the routes that point to the controllers above
 router.route('/').get(getAllMeetings);
-router.route('/new/:userid').post(createMeeting);
+router.route('/new').post(createMeeting);
 router.route('/:id').get(getOneMeeting);
 router.route('/:id').put(updateOneMeeting);
 router.route('/:id').delete(deleteOneMeeting);

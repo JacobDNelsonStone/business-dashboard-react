@@ -69,7 +69,7 @@ function NewMessageForm({currEmployee}) {
           <Form.Text className="text-muted">
           </Form.Text>
         </Form.Group>
-        <Button variant="warning" className='my-2' type="submit" onClick={handleFormSubmit}>
+        <Button variant="warning" className='my-2 zoomAnimation' type="submit" onClick={handleFormSubmit}>
           Submit
         </Button>
       </Form>

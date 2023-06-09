@@ -33,7 +33,7 @@ function EmployeeList(props) {
     <Col className="">
       {employees && employees.map(employee => (
         <Card className="py-2" bg="dark" variant="dark" key={employee.fname}>
-          <CardHeader className="text-light">
+          <CardHeader className="text-light zoomAnimation">
             {employee.fname} {employee.lname}
           </CardHeader>
         </Card>

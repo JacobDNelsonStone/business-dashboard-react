@@ -14,15 +14,14 @@ module.exports = {
         })
       return res.status(200).json({ status: "success", payload: meeting })
     } catch (err) {
-      return res.status(400).json({ status: "error", msg: `Error creating meeting Item: ${err.message}` })
+      return res.status(400).json({ status: "error", msg: `Error creating meeting: ${err.message}` })
     }
   },
 
 
   async getAllMeetings({ body, params }, res) {
     try {
-      const meetings = await Meeting.find()
-        .populate('employees')
+      const meetings = await Meeting.find().populate('employees')
       console.log(meetings)
       return res.status(200).json({ status: "success", payload: meetings })
     } catch (err) {
