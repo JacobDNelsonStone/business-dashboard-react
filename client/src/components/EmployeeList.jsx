@@ -14,7 +14,7 @@ function EmployeeList(props) {
           "Content-Type": "application/json"
         }
       });
-      
+
       const res = await query.json()
       console.log(res)
       if (res) {

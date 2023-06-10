@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useEmployeeContext } from "../ctx/EmployeeContext"
-import {Container1, MeetingList, Charts } from "../components";
+import { Container1, MeetingList, Charts } from "../components";
 import { Card, Container, Spinner } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 
@@ -49,10 +49,12 @@ const HomePage = () => {
       {/* <Container1 /> */}
       <Container className="col-xl-6 mb-3 align-items-start zoomAnimation">
         <Card bg="info">
-          <Charts />
+          <Link to="/department" style={{ textDecoration: "none", textDecorationColor: "none" }}>
+            <Charts />
+          </Link>
         </Card>
       </Container>
-      <Link to="/meetingPage" style={{textDecoration: "none", textDecorationColor: "none"}}>
+      <Link to="/meetingPage" style={{ textDecoration: "none", textDecorationColor: "none" }}>
         < MeetingList />
       </Link>
     </>

@@ -48,7 +48,7 @@ const MeetingsList = () => {
         ))}
       </Row>
       <Row>
-        
+
       </Row>
     </Container>
   );

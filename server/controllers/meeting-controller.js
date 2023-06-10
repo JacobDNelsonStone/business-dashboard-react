@@ -5,7 +5,7 @@ const { Meeting } = require('../models');
 module.exports = {
 
   async createMeeting({ body, params }, res) {
-    console.log('seen')
+    // console.log('seen')
     try {
       const meeting = await Meeting.create(
         {
@@ -13,6 +13,7 @@ module.exports = {
           meetingDate: body.meetingDate,
           employees: body.employees
         })
+        // console.log(meeting)
       return res.status(200).json({ status: "success", payload: meeting })
     } catch (err) {
       return res.status(400).json({ status: "error", msg: `Error creating meeting: ${err.message}` })

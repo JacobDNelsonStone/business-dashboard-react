@@ -17,7 +17,7 @@ function MessageList(props) {
       console.log(res)
       if (res) {
         setMessages(res.payload)
-        console.log(messages)
+        // console.log(messages)
       }
     } catch (err) {
       console.log(err.message)

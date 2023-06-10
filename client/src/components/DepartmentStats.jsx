@@ -18,7 +18,7 @@ function DepartmentStats(props) {
             console.log(res)
             if (res) {
                 setStats(res.payload)
-                console.log(stats)
+                // console.log(stats)
             }
         } catch (err) {
             console.log(err.message)

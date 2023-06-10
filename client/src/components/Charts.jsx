@@ -52,10 +52,10 @@ const Charts = () => {
         });
 
         const res = await query.json()
-        console.log(res)
+        // console.log(res)
         if (res) {
           setStats(res.payload)
-          console.log(stats)
+          // console.log(stats)
             // console.log(stats)
         }
     } catch (err) {
@@ -66,7 +66,7 @@ const Charts = () => {
   // "reactivates" the useEffect statement by calling it more than once via "stats.length" counting up
   useEffect(() => {
     getStats();
-    console.log(stats[2].monthlyCosts);
+    // console.log(stats[2].monthlyCosts);
   }, [stats.length]); 
 
  /*  useEffect(() => {

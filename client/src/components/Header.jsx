@@ -5,8 +5,8 @@ import { Navbar, Nav, Row } from "react-bootstrap";
 
 const Header = () => {
   const { currEmployee, logout } = useEmployeeContext();
-  console.log(window.location.pathname);
-  console.log(currEmployee.status);
+  // console.log(window.location.pathname);
+  // console.log(currEmployee.status);
   const [homeClicked, setHomeClicked] = useState(false);
   const [signClicked, setSignClicked] = useState(false);
   const [loginClicked, setLoginClicked] = useState(false);

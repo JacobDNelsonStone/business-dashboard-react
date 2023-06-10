@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Wrapper, Container1 } from "./components"
 import { EmployeeProvider } from "./ctx/EmployeeContext";
-import { HomePage, LoginPage, SignupPage, MeetingItem, MeetingPage, MessageBoardPage, DepartmentStatsPage } from "./pages";
+import { HomePage, LoginPage, SignupPage, MeetingPage, MessageBoardPage, DepartmentStatsPage } from "./pages";
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,12 +20,8 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
-              <Route path="/messageBoard" element={<MessageBoardPage />} />
-              // Andrew's code
-              <Route path="/meeting" element={<MeetingItem />} />
+              <Route path="/messageBoard" element={<MessageBoardPage />} />            
               <Route path="/department" element={<DepartmentStatsPage />} />
-                
-              // Jacob's code
               <Route path="/meetingPage" element={<MeetingPage />} />
             </Routes>
           </div>

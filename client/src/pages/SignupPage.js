@@ -3,14 +3,14 @@ import { useState } from "react"
 const SignupPage = (props) => {
 
   const defForm = { fname: "", lname: "", email: "", password: "" }
-  const [ formData, setFormData ] = useState(defForm)
-  const [ signupResult, setSignupResult ] = useState("")
+  const [formData, setFormData] = useState(defForm)
+  const [signupResult, setSignupResult] = useState("")
 
   const handleInputChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleFormSubmit = async(e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
     const query = await fetch("/api/employee", {
       method: "post",
@@ -20,11 +20,11 @@ const SignupPage = (props) => {
       }
     })
 
-    if( !query.ok ) {
+    if (!query.ok) {
       setSignupResult("fail")
     } else {
       const result = await query.json()
-      if( result.status === "success" && result.payload ){
+      if (result.status === "success" && result.payload) {
         window.location.href = "/"
       }
     }
@@ -38,7 +38,7 @@ const SignupPage = (props) => {
 
         <div className="form-group mb-3">
           <label>First Name</label>
-          <input   
+          <input
             type="text"
             name="fname"
             placeholder="John"
@@ -50,7 +50,7 @@ const SignupPage = (props) => {
 
         <div className="form-group mb-3">
           <label>Last Name</label>
-          <input   
+          <input
             type="text"
             name="lname"
             placeholder="Doe"
@@ -63,7 +63,7 @@ const SignupPage = (props) => {
 
         <div className="form-group mb-3">
           <label>Email Address</label>
-          <input   
+          <input
             type="text"
             name="email"
             placeholder="john@gmail.com"
@@ -75,7 +75,7 @@ const SignupPage = (props) => {
 
         <div className="form-group mb-3">
           <label>Password</label>
-          <input   
+          <input
             type="password"
             name="password"
             className="form-control"
@@ -89,7 +89,7 @@ const SignupPage = (props) => {
         </div>
       </form>
 
-      { signupResult === "fail" && (
+      {signupResult === "fail" && (
         <div className="alert alert-danger" role="alert">
           Signup failed!
         </div>

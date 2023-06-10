@@ -2,11 +2,11 @@ import { useState } from "react"
 
 const LoginPage = () => {
   const defForm = { email: "", password: "" }
-  const [ formData, setFormData ] = useState(defForm)
-  const [ loginResult, setLoginResult ] = useState("")
+  const [formData, setFormData] = useState(defForm)
+  const [loginResult, setLoginResult] = useState("")
 
   const handleInputChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleFormSubmit = async (e) => {
@@ -19,9 +19,9 @@ const LoginPage = () => {
       }
     })
     const result = await query.json()
-    console.log(result)
+    // console.log(result)
 
-    if( result && result.payload ){
+    if (result && result.payload) {
       window.location.href = "/"
     } else {
       setLoginResult("fail")
@@ -35,7 +35,7 @@ const LoginPage = () => {
       <form className="form mb-3">
         <div className="form-group mb-3">
           <label>Email Address</label>
-          <input   
+          <input
             type="text"
             name="email"
             placeholder="john@gmail.com"
@@ -47,7 +47,7 @@ const LoginPage = () => {
 
         <div className="form-group mb-3">
           <label>Password</label>
-          <input   
+          <input
             type="password"
             name="password"
             className="form-control"
@@ -61,13 +61,13 @@ const LoginPage = () => {
         </div>
       </form>
 
-      { loginResult === "success" && (
+      {loginResult === "success" && (
         <div className="alert alert-success" role="alert">
           Login successful!
         </div>
       )}
 
-      { loginResult === "fail" && (
+      {loginResult === "fail" && (
         <div className="alert alert-danger" role="alert">
           Login failed!
         </div>

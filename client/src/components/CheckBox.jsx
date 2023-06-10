@@ -1,19 +1,17 @@
 import { useState } from "react"
 import { Form, FormCheck } from "react-bootstrap"
 
-function CheckBox({ employees }) {
-  // console.log(employees[0].fname)
-  // console.log(employees.map(employee => employee.fname + " " + employee.lname))
-  const [chosenEmployees, setChosenEmployees] = useState([])
-  const [chosenEmployeeArr, setChosenEmployeeArr] = useState([])
+function CheckBox({ employees, setChosenEmployeeArr, chosenEmployeeArr }) {
+  // console.log(chosenEmployeeArr)
 
   const getChosenEmployees = (e) => {
     e.preventDefault()
     // console.log(e.target.value)
-    setChosenEmployees(chosenEmployeeArr.concat(e.target.value));
-    console.log(chosenEmployeeArr)
-    setChosenEmployees(chosenEmployeeArr)
-    console.log(chosenEmployees)
+    if(!chosenEmployeeArr.includes(e.target.value)) {
+    setChosenEmployeeArr(chosenEmployeeArr.concat(e.target.value));
+    }
+    // console.log(chosenEmployeeArr)
+    // console.log(chosenEmployees)
   }
 
   return (
