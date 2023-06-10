@@ -4,25 +4,25 @@ import { Form, Button, Card } from "react-bootstrap";
 // import { useEmployeeContext } from "../ctx/EmployeeContext";
 
 
-function NewMessageForm({currEmployee}) {
+function NewMessageForm({ currEmployee }) {
   // const { currEmployee } = useEmployeeContext()
   const [formData, setFormData] = useState('');
 
-  
+
   const handleInputChange = (e) => {
     setFormData(e.target.value)
     console.log(formData)
   }
-  
+
   const postNewMessage = async (e) => {
     e.preventDefault()
-    console.log(currEmployee.data._id)
-    console.log(formData);
-    console.log('got here')
+    // console.log(currEmployee.data._id)
+    // console.log(formData);
+    // console.log('got here')
     try {
       const query = await fetch('/api/message', {
         method: 'POST',
-        body: JSON.stringify({ messageText: formData, employeeId: currEmployee.data._id}),
+        body: JSON.stringify({ messageText: formData, employeeId: currEmployee.data._id }),
         headers: {
           "Content-Type": "application/json"
         }
@@ -43,8 +43,8 @@ function NewMessageForm({currEmployee}) {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault()
-    console.log(formData)
-    console.log('==========', formData.messageText)
+    // console.log(formData)
+    // console.log('==========', formData.messageText)
 
     if (formData.text === '') {
       alert("text field must be filled out :)")

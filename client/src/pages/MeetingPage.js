@@ -7,6 +7,9 @@ import { MeetingList, CheckBoxContainer } from "../components";
 import { Col, Container, FormCheck, Modal, ModalHeader, Row } from "react-bootstrap";
 
 const MeetingPage = () => {
+  const [chosenEmployeeArr, setChosenEmployeeArr] = useState([])
+
+
   const [statusMessage, setStatusMessage] = useState({})
   const formMessage = { meetingTopic: "", meetingDate: "", employees: [] }
   const [newMeeting, setNewMeeting] = useState(formMessage)
@@ -15,7 +18,7 @@ const MeetingPage = () => {
   const [employees, setEmployees] = useState([])
   const [modalState, setModalState] = useState({ isOpen: false })
 
-  const openModal = () => setModalState({ isOpen: true }); console.log(modalState);
+  const openModal = () => setModalState({ isOpen: true });
   const closeModal = () => setModalState({ isOpen: false });
 
   const getUsers = async () => {
@@ -29,7 +32,6 @@ const MeetingPage = () => {
       });
 
       const res = await query.json()
-      console.log(res)
       if (res) {
         setEmployees(res.payload)
       }
@@ -40,29 +42,12 @@ const MeetingPage = () => {
 
   const handleInputChange = (e) => {
     setNewMeeting({ ...newMeeting, [e.target.name]: e.target.value })
-    console.log(newMeeting)
   }
-
-  // const handleCheckBoxes = (e) => {
-  //   setNewMeeting({...newMeeting, employees: e.target.value})
-  // }
-
-  // if the id is anything but 0, query for that item via the api. 0 means it's a new Meeting being created.
-  // const lookupMeeting = async () => {
-  //   try {
-  //     const resp = await fetch(`/api/meeting/${id}`)
-  //     const result = await resp.json()
-  //     if( result.status === "success" ){
-  //       setMeetingItem(result.payload)
-  //     }
-  //   } catch(err){
-  //     console.log(err.message)
-  //   }
-  // }
 
   const saveMeeting = async (e) => {
     e.preventDefault()
     closeModal()
+    setNewMeeting({ ...newMeeting, employees: newMeeting.employees.concat(chosenEmployeeArr) })
     if (!newMeeting.meetingTopic.trim().length) {
       setStatusMessage({ type: "danger", msg: "Please provide a meeting topic first!" })
       return statusMessage;
@@ -80,7 +65,7 @@ const MeetingPage = () => {
       const result = await resp.json()
       if (result.status === "success") {
         setStatusMessage({ type: "success", msg: "Changes saved successfully!" })
-        console.log(result.payload)
+        // console.log(result.payload)
         window.location.reload()
       }
     } catch (err) {
@@ -90,9 +75,6 @@ const MeetingPage = () => {
 
   useEffect(() => {
     getUsers()
-    // if( id && id != "0" ){
-    //   lookupMeeting()
-    // }
   }, [window.location.href])
 
   if (currEmployee.status === "searching") return <></>
@@ -129,7 +111,7 @@ const MeetingPage = () => {
               />
             </Form.Group>
 
-            <CheckBoxContainer employees={employees} />
+            <CheckBoxContainer employees={employees} chosenEmployeeArr={chosenEmployeeArr} setChosenEmployeeArr={setChosenEmployeeArr} />
 
             <Container className="d-xl-flex justify-content-center">
               <Row className="col-xl-6 me-4">
