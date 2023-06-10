@@ -91,6 +91,10 @@ button {
   cursor: pointer;
 }
 
+.h-10 {
+  max-height: 24px;
+}
+
 .zoomAnimation {
   cursor: pointer;
   transition: transform .4s;

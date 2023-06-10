@@ -5,6 +5,7 @@ const { Meeting } = require('../models');
 module.exports = {
 
   async createMeeting({ body, params }, res) {
+    console.log('seen')
     try {
       const meeting = await Meeting.create(
         {

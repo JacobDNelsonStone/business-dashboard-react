@@ -62,6 +62,7 @@ const MeetingPage = () => {
 
   const saveMeeting = async (e) => {
     e.preventDefault()
+    closeModal()
     if (!newMeeting.meetingTopic.trim().length) {
       setStatusMessage({ type: "danger", msg: "Please provide a meeting topic first!" })
       return statusMessage;
@@ -79,6 +80,8 @@ const MeetingPage = () => {
       const result = await resp.json()
       if (result.status === "success") {
         setStatusMessage({ type: "success", msg: "Changes saved successfully!" })
+        console.log(result.payload)
+        window.location.reload()
       }
     } catch (err) {
       setStatusMessage({ type: "danger", msg: "There was an error attempting to save this meeting." })
@@ -106,6 +109,7 @@ const MeetingPage = () => {
             <Form.Group className="mb-3 text-dark" controlId="MeetingForm.MeetingTopic">
               <Modal.Title>Enter the Meeting Topic Here</Modal.Title>
               <Form.Control
+                className="h-10"
                 required
                 as="textarea"
                 name='meetingTopic'
@@ -116,6 +120,7 @@ const MeetingPage = () => {
             <Form.Group className="mb-3 text-dark" controlId="MeetingForm.MeetingDate">
               <Modal.Title>Enter the Date of the Meeting Here</Modal.Title>
               <Form.Control
+                className="h-10"
                 required
                 as="textarea"
                 name='meetingDate'
@@ -128,7 +133,7 @@ const MeetingPage = () => {
 
             <Container className="d-xl-flex justify-content-center">
               <Row className="col-xl-6 me-4">
-                <Button variant="primary" className=" me-2 mt-2" onClick={closeModal} type="submit">Create Meeting</Button>
+                <Button variant="primary" className=" me-2 mt-2" onClick={saveMeeting} type="submit">Create Meeting</Button>
               </Row>
               <Row float="left" className="col-xl-6 float-end">
                 <Button variant="primary" className="me-2 mt-2" onClick={closeModal} type="button">Close</Button>
