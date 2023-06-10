@@ -142,9 +142,25 @@ const Header = () => {
                       backgroundColor: "black",
                     }}
                   >
-                    <span className="nav-link active text-light fs-">
+                    <span className="nav-link active text-light">
                       Welcome back, {currEmployee.data.fname}
                     </span>
+                  </li>
+                  <li
+                    style={{
+                      ...headerButtonDefaultStyle,
+                      backgroundColor: loginClicked ? "darkred" : "darkblue",
+                      clipPath: loginClicked
+                        ? "polygon(0 0, 100% 0, 50% 100%)"
+                        : "none",
+                      transform: loginClicked ? "translateY(4px)" : "none",
+                    }}
+                    onMouseEnter={(e) => (e.target.style.opacity = "0.9")}
+                    onMouseLeave={(e) => (e.target.style.opacity = "1")}
+                  >
+                    <Nav.Link className="nav-link zoomAnimation active text-light fs-6" href="/meetingPage">
+                      Meetings
+                    </Nav.Link>
                   </li>
                   <li
                     style={{
