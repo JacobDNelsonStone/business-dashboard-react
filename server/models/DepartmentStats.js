@@ -4,14 +4,14 @@ const { ObjectId } = require('mongoose').Types;
 
 const departmentSchema = new Schema({
   monthlyEarnings: {
-    type: String,
+    type: Number,
   },
   monthlyCosts: {
-    type: String
+    type: Number
   },
 
   projectedSales: {
-    type: String
+    type: Number
   },
   employeeId: {
     type: Schema.Types.ObjectId,

@@ -22,7 +22,7 @@ module.exports = {
   async getAllMeetings({ body, params }, res) {
     try {
       const meetings = await Meeting.find().populate('employees')
-      console.log(meetings)
+      // console.log(meetings)
       return res.status(200).json({ status: "success", payload: meetings })
     } catch (err) {
       console.log(err.message)

@@ -15,11 +15,12 @@ const MeetingsList = () => {
       });
 
       const res = await query.json()
-      console.log(res)
+      // console.log(res)
       if (res) {
         setMeetings(res.payload)
-        console.log(meetings)
-        console.log(meetings[0]._id)
+        // console.log(meetings)
+        // console.log(meetings[0].employees[0].fname)
+        // console.log(meetings[0]._id)
       }
     } catch (err) {
       console.log(err.message)

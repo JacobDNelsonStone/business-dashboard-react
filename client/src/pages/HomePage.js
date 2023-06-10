@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useEmployeeContext } from "../ctx/EmployeeContext"
-import { Container1, MeetingList } from "../components";
-import Charts from "../components/Charts";
+import {Container1, MeetingList, Charts } from "../components";
 import { Card, Container, Spinner } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 
@@ -27,9 +26,11 @@ const HomePage = () => {
     checkForMeetings()
   }, [currEmployee])
 
+  // if not logged in, prompt user to login or sign-in
   if (currEmployee.status === "notfound")
     return (
       <center>
+        <h1>All-In-One Business Dashboard</h1>
         <Card bg="danger" className="col-6">
           <CardHeader>
             <h1 className="text-light">Please sign up or log in to view your department</h1>
@@ -37,14 +38,14 @@ const HomePage = () => {
           <div className="py-5">
             <Spinner variant='light' />
           </div>
-
         </Card>
       </center>
     )
 
+  // else, render chart & meeting list
   return (
     <>
-      <h1>Home Page</h1>
+      <h1>All-In-One Business Dashboard</h1>
       {/* <Container1 /> */}
       <Container className="col-xl-6 mb-3 align-items-start zoomAnimation">
         <Card bg="info">
@@ -54,28 +55,6 @@ const HomePage = () => {
       <Link to="/meetingPage" style={{textDecoration: "none", textDecorationColor: "none"}}>
         < MeetingList />
       </Link>
-      {/* {currEmployee.status === "notfound" ? (
-        <p>Sign in or log in to see your company's data!.</p>
-      ) : (
-        <> */}
-      {/* if there are no meetings, prompt user to make one */}
-      {/* {MeetingList.length === 0 ? (
-            <p>
-              Sorry, no items available. You can{" "}
-              <Link to="/meeting/0">create one now</Link>.
-            </p>
-          ) : (
-            // else, list every meeting
-            <ul>
-              {MeetingList.map((meeting) => (
-                <li key={meeting._id}>
-                  <Link to={`/meeting/${meeting._id}`}>{meeting.item}</Link>
-                </li>
-              ))}
-            </ul>
-          )} */}
-      {/* </>
-      )} */}
     </>
   );
 }
