@@ -1,4 +1,4 @@
-# Business dash.
+# All In One Business Dashboard 
 
 ## Table of Contents
 
