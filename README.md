@@ -18,23 +18,26 @@
 
 ## Installation
 
-- npm i, npm run start
+Fork or clone our repo, then oen a terminal in the root of the project and run:
+- npm i, npm run develop
 
 ## Technologies Utilized
 
 - HTML
 - CSS 
 - React
-- React Bootstrap  
-- Chakra U
+- React Bootstrap
 - javascript
 - mongoose
 - mongoDB
-- chart.js
+- chart.JS
+- React Router
 
 
 ## Features
-- employees can make accounts, then post chat keep track of meetings and business analytics on the home page.
+- employees can make accounts, send department-wide chats, keep track of meetings, and business analytics.
+
+
 ## Tests
 
 N/A
