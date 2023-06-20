@@ -13,7 +13,7 @@ module.exports = {
           meetingDate: body.meetingDate,
           employees: body.employees
         })
-        // console.log(meeting)
+        console.log(meeting)
       return res.status(200).json({ status: "success", payload: meeting })
     } catch (err) {
       return res.status(400).json({ status: "error", msg: `Error creating meeting: ${err.message}` })
