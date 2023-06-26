@@ -9,7 +9,7 @@ import { Col, Container, FormCheck, Modal, ModalHeader, Row } from "react-bootst
 const MeetingPage = () => {
   const [chosenEmployeeArr, setChosenEmployeeArr] = useState([])
 
-
+  // console.log(chosenEmployeeArr)
   const [statusMessage, setStatusMessage] = useState({})
   const formMessage = { meetingTopic: "", meetingDate: "", employees: [] }
   const [newMeeting, setNewMeeting] = useState(formMessage)
@@ -45,9 +45,11 @@ const MeetingPage = () => {
   }
 
   const saveMeeting = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     closeModal()
     setNewMeeting({ ...newMeeting, employees: newMeeting.employees.concat(chosenEmployeeArr) })
+    // console.log(newMeeting.employees)
+    // console.log(chosenEmployeeArr)
     if (!newMeeting.meetingTopic.trim().length) {
       setStatusMessage({ type: "danger", msg: "Please provide a meeting topic first!" })
       return statusMessage;
@@ -65,7 +67,7 @@ const MeetingPage = () => {
       const result = await resp.json()
       if (result.status === "success") {
         setStatusMessage({ type: "success", msg: "Changes saved successfully!" })
-        // console.log(result.payload)
+        console.log(result.payload)
         window.location.reload()
       }
     } catch (err) {
