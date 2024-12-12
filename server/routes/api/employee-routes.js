@@ -4,9 +4,9 @@ const router = require('express').Router();
 const { createEmployee, authEmployee, verifyEmployee, getEmployees } = require('../../controllers/employee-controller');
 
 // Declare the routes that point to the controllers above
-router.route('/').post(createEmployee);
-router.route('/').get(getEmployees);
-router.route('/auth').post(authEmployee);
-router.route('/verify').post(verifyEmployee);
+router.route('/employee').post(createEmployee);
+router.route('/employee').get(getEmployees);
+router.route('/employee/auth').post(authEmployee);
+router.route('/employee/verify').post(verifyEmployee);
 
 module.exports = router;
