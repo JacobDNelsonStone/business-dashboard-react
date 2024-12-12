@@ -2,8 +2,8 @@ import { Form, FormCheck } from "react-bootstrap"
 import CheckBox from "./CheckBox"
 
 function CheckBoxContainer({ employees, children, chosenEmployeeArr, setChosenEmployeeArr }) {
-  // console.log(employees)
-  // console.log(chosenEmployeeArr)
+  console.log(employees)
+  console.log(chosenEmployeeArr)
   return (
     <>
       <Form.Group>
