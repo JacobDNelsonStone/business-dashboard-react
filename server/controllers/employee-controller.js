@@ -32,10 +32,10 @@ module.exports = {
     } catch (err) {
       return res.status(400).json({ message: 'Unable to authenticate employee' });
     }
-    if (!employee) return res.status(400).json({ message: 'Unable to authenticate employee' });
+    if (!employee) return res.status(400).json({ message: 'Unable to authenticate employee cuz of email' });
 
     const isValid = await employee.verify(body.password)
-    if (!isValid) return res.status(400).json({ message: 'Unable to authenticate employee' });
+    if (!isValid) return res.status(400).json({ message: 'Unable to authenticate employee cuz of password' });
 
     const token = jwt.sign({
       email: employee.email,
